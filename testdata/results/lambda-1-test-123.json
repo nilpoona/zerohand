@@ -1,0 +1,272 @@
+[
+  {
+    "timestamp": "2025-12-14T00:59:33.256171544+09:00",
+    "status_code": 200,
+    "duration_us": 765379
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.561769161+09:00",
+    "status_code": 200,
+    "duration_us": 1220712
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.156443605+09:00",
+    "status_code": 200,
+    "duration_us": 1633232
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.756709983+09:00",
+    "status_code": 200,
+    "duration_us": 1823953
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.856639563+09:00",
+    "status_code": 200,
+    "duration_us": 1895568
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.057206816+09:00",
+    "status_code": 200,
+    "duration_us": 1893484
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.95631229+09:00",
+    "status_code": 200,
+    "duration_us": 2040338
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.656885709+09:00",
+    "status_code": 200,
+    "duration_us": 1621436
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.756494272+09:00",
+    "status_code": 200,
+    "duration_us": 971958
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.856769292+09:00",
+    "status_code": 200,
+    "duration_us": 2146483
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.256867481+09:00",
+    "status_code": 200,
+    "duration_us": 2026281
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.356836317+09:00",
+    "status_code": 200,
+    "duration_us": 1247788
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.456858311+09:00",
+    "status_code": 200,
+    "duration_us": 3159346
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.156613684+09:00",
+    "status_code": 200,
+    "duration_us": 1476511
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.856695406+09:00",
+    "status_code": 200,
+    "duration_us": 1778564
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.656836838+09:00",
+    "status_code": 200,
+    "duration_us": 1372199
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.556141997+09:00",
+    "status_code": 200,
+    "duration_us": 3573355
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.756553784+09:00",
+    "status_code": 200,
+    "duration_us": 1608469
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.357016326+09:00",
+    "status_code": 200,
+    "duration_us": 3091203
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.356465613+09:00",
+    "status_code": 200,
+    "duration_us": 1369307
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.856972934+09:00",
+    "status_code": 200,
+    "duration_us": 1949082
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.656474295+09:00",
+    "status_code": 200,
+    "duration_us": 3283956
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.256801855+09:00",
+    "status_code": 200,
+    "duration_us": 1978463
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.956931508+09:00",
+    "status_code": 200,
+    "duration_us": 1278221
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.656459874+09:00",
+    "status_code": 200,
+    "duration_us": 1665746
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.45706151+09:00",
+    "status_code": 200,
+    "duration_us": 2925496
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.75633998+09:00",
+    "status_code": 200,
+    "duration_us": 1892408
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.056296953+09:00",
+    "status_code": 200,
+    "duration_us": 3304415
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.157205207+09:00",
+    "status_code": 200,
+    "duration_us": 3207143
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.557155971+09:00",
+    "status_code": 200,
+    "duration_us": 3304239
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.356859926+09:00",
+    "status_code": 0,
+    "duration_us": 10001317,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.456699691+09:00",
+    "status_code": 0,
+    "duration_us": 10000857,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.656456229+09:00",
+    "status_code": 0,
+    "duration_us": 10000328,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.157156313+09:00",
+    "status_code": 0,
+    "duration_us": 10000231,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.256958483+09:00",
+    "status_code": 0,
+    "duration_us": 10001015,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.356502428+09:00",
+    "status_code": 0,
+    "duration_us": 10000817,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.756143568+09:00",
+    "status_code": 0,
+    "duration_us": 10000658,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:34.956459162+09:00",
+    "status_code": 0,
+    "duration_us": 10000249,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.056839633+09:00",
+    "status_code": 0,
+    "duration_us": 10000156,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.156732493+09:00",
+    "status_code": 0,
+    "duration_us": 10000377,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.457004175+09:00",
+    "status_code": 0,
+    "duration_us": 10000841,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.557124486+09:00",
+    "status_code": 0,
+    "duration_us": 10000077,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:35.956905676+09:00",
+    "status_code": 0,
+    "duration_us": 10000154,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.05670519+09:00",
+    "status_code": 0,
+    "duration_us": 10000782,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.256440591+09:00",
+    "status_code": 0,
+    "duration_us": 10001043,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.556701132+09:00",
+    "status_code": 0,
+    "duration_us": 10001125,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:36.956493612+09:00",
+    "status_code": 0,
+    "duration_us": 10000969,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.456507052+09:00",
+    "status_code": 0,
+    "duration_us": 10000247,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:37.856719211+09:00",
+    "status_code": 0,
+    "duration_us": 10000516,
+    "error": "timeout"
+  },
+  {
+    "timestamp": "2025-12-14T00:59:38.056704229+09:00",
+    "status_code": 0,
+    "duration_us": 10000975,
+    "error": "timeout"
+  }
+]

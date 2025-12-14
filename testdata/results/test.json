@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-12-14T01:01:03.679351193+09:00",
+    "status_code": 503,
+    "duration_us": 803220
+  },
+  {
+    "timestamp": "2025-12-14T01:01:03.879604866+09:00",
+    "status_code": 503,
+    "duration_us": 803795
+  },
+  {
+    "timestamp": "2025-12-14T01:01:04.079080931+09:00",
+    "status_code": 503,
+    "duration_us": 764654
+  },
+  {
+    "timestamp": "2025-12-14T01:01:04.279232537+09:00",
+    "status_code": 503,
+    "duration_us": 768712
+  },
+  {
+    "timestamp": "2025-12-14T01:01:04.479648768+09:00",
+    "status_code": 503,
+    "duration_us": 773239
+  },
+  {
+    "timestamp": "2025-12-14T01:01:04.679503634+09:00",
+    "status_code": 503,
+    "duration_us": 820668
+  },
+  {
+    "timestamp": "2025-12-14T01:01:04.87990436+09:00",
+    "status_code": 503,
+    "duration_us": 799497
+  },
+  {
+    "timestamp": "2025-12-14T01:01:05.079254304+09:00",
+    "status_code": 503,
+    "duration_us": 719636
+  },
+  {
+    "timestamp": "2025-12-14T01:01:05.279069991+09:00",
+    "status_code": 503,
+    "duration_us": 694474
+  },
+  {
+    "timestamp": "2025-12-14T01:01:05.47965414+09:00",
+    "status_code": 503,
+    "duration_us": 983329
+  }
+]
