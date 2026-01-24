@@ -4,7 +4,15 @@ A distributed load testing tool for Web APIs built with Go.
 
 ## Overview
 
-Zerohand is a serverless distributed load testing tool that leverages AWS Lambda to generate load. This MVP version runs locally without AWS deployment, providing a simple CLI interface to conduct load tests against HTTP endpoints.
+Zerohand is a distributed load testing tool designed to help developers and DevOps engineers quickly assess API performance and capacity. With a focus on spike tests, load tests, and stress tests, Zerohand provides:
+
+- Simple CLI interface for quick load testing
+- RPS (requests per second) control
+- Detailed response time metrics and statistics
+- Support for various HTTP methods and custom headers
+- Real-time progress tracking and graceful shutdown
+
+Whether you're validating capacity before a product launch, testing autoscaling behavior, or finding performance bottlenecks, Zerohand makes it easy to generate controlled load and analyze results.
 
 ## Features
 
@@ -24,7 +32,6 @@ Zerohand is a serverless distributed load testing tool that leverages AWS Lambda
 - Go 1.25 or later
 
 ### Build from Source
-
 ```bash
 # Clone the repository
 git clone https://github.com/nilpoona/zerohand.git
@@ -40,13 +47,11 @@ go build -o zerohand cmd/zerohand/main.go
 ## Usage
 
 ### Basic GET Request
-
 ```bash
 ./zerohand run --url https://httpbin.org/get --rps 10 --duration 5
 ```
 
 ### POST Request with Body and Headers
-
 ```bash
 ./zerohand run \
   --url https://httpbin.org/post \
@@ -58,7 +63,6 @@ go build -o zerohand cmd/zerohand/main.go
 ```
 
 ### Save Results to JSON
-
 ```bash
 ./zerohand run \
   --url https://api.example.com/endpoint \
@@ -67,8 +71,7 @@ go build -o zerohand cmd/zerohand/main.go
   --output results.json
 ```
 
-### Test with Timeout
-
+### Test with Custom Timeout
 ```bash
 ./zerohand run \
   --url https://httpbin.org/delay/15 \
@@ -93,7 +96,6 @@ go build -o zerohand cmd/zerohand/main.go
 ## Output Format
 
 ### Terminal Output Example
-
 ```
 === Load Test Configuration ===
 Test ID:     a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -129,7 +131,6 @@ Status Codes:
 ### JSON Output Structure
 
 When using `--output` flag, results are saved in the following format:
-
 ```json
 [
   {
@@ -153,6 +154,33 @@ When using `--output` flag, results are saved in the following format:
 ]
 ```
 
+## Use Cases
+
+### Spike Testing
+Test how your API handles sudden traffic spikes (5-10 minutes):
+```bash
+./zerohand run --url https://api.example.com/endpoint --rps 1000 --duration 600
+```
+
+### Load Testing
+Verify stable operation under expected traffic (20-30 minutes):
+```bash
+./zerohand run --url https://api.example.com/endpoint --rps 200 --duration 1800
+```
+
+### Stress Testing
+Find system limits by gradually increasing load:
+```bash
+# Phase 1: Baseline
+./zerohand run --url https://api.example.com/endpoint --rps 100 --duration 300
+
+# Phase 2: Increased load
+./zerohand run --url https://api.example.com/endpoint --rps 500 --duration 300
+
+# Phase 3: High load
+./zerohand run --url https://api.example.com/endpoint --rps 1000 --duration 300
+```
+
 ## Error Classification
 
 Errors are automatically classified into the following categories:
@@ -165,69 +193,25 @@ Errors are automatically classified into the following categories:
 - `canceled`: Request canceled (e.g., Ctrl+C)
 - `unknown_error`: Unclassified errors
 
-## Project Structure
-
-```
-zerohand/
-├── cmd/
-│   ├── zerohand/              # CLI application
-│   │   └── main.go
-│   └── lambda/                # Lambda function (local testing)
-│       └── main.go
-├── internal/                  # Private application code
-│   ├── config/               # Configuration structures
-│   │   └── config.go
-│   ├── executor/             # HTTP request execution logic
-│   │   └── executor.go
-│   ├── runner/               # RPS control and orchestration
-│   │   └── runner.go
-│   └── aggregator/           # Result aggregation and statistics
-│       └── aggregator.go
-├── testdata/
-│   └── results/              # JSON result files
-├── go.mod
-├── go.sum
-├── CLAUDE.md
-└── README.md
-```
-
-## Local Lambda Testing
-
-For testing the Lambda function locally:
-
-```bash
-go run cmd/lambda/main.go
-```
-
-This will execute a hardcoded test configuration and save results to `testdata/results/`.
-
 ## Performance Notes
 
-**MVP Performance Goals:**
+**Performance Goals:**
 - RPS Accuracy: ±5% of requested RPS
-- Memory Usage: Reasonable for up to 1000 concurrent requests
-- CPU Usage: Should not saturate CPU at low RPS (<100)
-
-**Current Limitations:**
-- Spawns one goroutine per request (simple but not highly scalable)
-- All results stored in memory before aggregation
-- Progress updates every second
-
-For production use with high RPS (>1000), consider implementing worker pools and result streaming.
+- Efficient memory usage for up to 1000 concurrent requests
+- Low CPU overhead at moderate load levels
 
 ## Testing Recommendations
 
 ### Test Against Public APIs
 
-- httpbin.org: Great for testing various HTTP methods and responses
-- jsonplaceholder.typicode.com: REST API for testing
+- [httpbin.org](https://httpbin.org): Great for testing various HTTP methods and responses
+- [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com): REST API for testing
 
 ### Start with Low RPS
 
 Begin with low RPS (10-50) to avoid overwhelming the target server.
 
 Example test sequence:
-
 ```bash
 # Test 1: Basic connectivity
 ./zerohand run --url https://httpbin.org/get --rps 5 --duration 3
@@ -241,22 +225,12 @@ Example test sequence:
 
 ## Future Enhancements
 
-- AWS Lambda deployment support
-- Multiple Lambda orchestration for distributed load
-- DynamoDB for result storage
-- Real-time progress updates via WebSocket
-- Web UI (React + TypeScript)
-- Authentication (Cognito or similar)
-- Per-user rate limiting
-
-## Development Guidelines
-
-- Write clean, idiomatic Go code
-- Use `context.Context` for cancellation
-- Handle errors explicitly
-- Add comments for complex logic
-- Keep functions small and focused
-- Use meaningful variable names
+- Distributed load generation across multiple machines
+- Real-time metrics visualization
+- WebSocket and Server-Sent Events support
+- Multi-step scenario testing
+- Advanced authentication support
+- Result history and comparison tools
 
 ## Troubleshooting
 
@@ -278,12 +252,5 @@ Progress updates every second. For very short tests (<3 seconds), you might not 
 
 ## License
 
-[Add your license here]
+MIT License
 
-## Contributing
-
-[Add contribution guidelines here]
-
-## Contact
-
-[Add contact information here]
