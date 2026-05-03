@@ -297,7 +297,3 @@ Consider increasing the `--timeout` value or checking network connectivity.
 
 Progress updates every second. For very short tests (<3 seconds), you might not see many updates.
 
-## License
-
-MIT License
-
