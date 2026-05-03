@@ -27,11 +27,38 @@ Whether you're validating capacity before a product launch, testing autoscaling 
 
 ## Installation
 
-### Prerequisites
+### Download Pre-built Binaries (Recommended)
+
+Download the latest release for your platform from the [GitHub Releases](https://github.com/nilpoona/zerohand/releases) page.
+
+#### Linux / macOS
+```bash
+# Download the binary (replace VERSION, OS, and ARCH with your values)
+# Example for Linux amd64:
+curl -LO https://github.com/nilpoona/zerohand/releases/download/v0.1.0/zerohand_0.1.0_linux_amd64.tar.gz
+
+# Extract the archive
+tar -xzf zerohand_0.1.0_linux_amd64.tar.gz
+
+# Move to a directory in your PATH
+sudo mv zerohand /usr/local/bin/
+
+# Verify installation
+zerohand --help
+```
+
+#### Windows
+1. Download the `.zip` file for Windows from the [releases page](https://github.com/nilpoona/zerohand/releases)
+2. Extract the archive
+3. Add the `zerohand.exe` to your PATH or run it directly
+
+### Build from Source
+
+#### Prerequisites
 
 - Go 1.25 or later
 
-### Build from Source
+#### Steps
 ```bash
 # Clone the repository
 git clone https://github.com/nilpoona/zerohand.git

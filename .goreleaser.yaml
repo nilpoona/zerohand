@@ -1,0 +1,171 @@
+# GoReleaser configuration for zerohand
+# Visit https://goreleaser.com for documentation
+
+version: 2
+
+before:
+  hooks:
+    # Run go mod tidy to ensure clean dependencies
+    - go mod tidy
+    # Run tests before building
+    - go test ./...
+
+builds:
+  - id: zerohand
+    main: ./cmd/zerohand
+    binary: zerohand
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - "7"
+    # Ignore specific combinations
+    ignore:
+      - goos: windows
+        goarch: arm
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      # Inject version information
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+      - -X main.date={{.Date}}
+
+archives:
+  - id: zerohand
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE
+      - CLAUDE.md
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
+  algorithm: sha256
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "merge conflict"
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+  groups:
+    - title: "New Features"
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: "Bug Fixes"
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 1
+    - title: "Performance Improvements"
+      regexp: "^.*perf[(\\w)]*:+.*$"
+      order: 2
+    - title: "Other Changes"
+      order: 999
+
+release:
+  github:
+    owner: nilpoona
+    name: zerohand
+  draft: false
+  prerelease: auto
+  mode: replace
+  header: |
+    ## Zerohand {{ .Tag }}
+
+    A distributed load testing tool for Web APIs.
+
+    ### Installation
+
+    Download the appropriate binary for your platform from the assets below.
+
+  footer: |
+    **Full Changelog**: https://github.com/nilpoona/zerohand/compare/{{ .PreviousTag }}...{{ .Tag }}
+
+# Homebrew tap (optional - uncomment if you want to publish to Homebrew)
+# brews:
+#   - name: zerohand
+#     repository:
+#       owner: nilpoona
+#       name: homebrew-tap
+#     folder: Formula
+#     homepage: https://github.com/nilpoona/zerohand
+#     description: A distributed load testing tool for Web APIs
+#     license: MIT
+#     install: |
+#       bin.install "zerohand"
+#     test: |
+#       system "#{bin}/zerohand", "--help"
+
+# Snapcraft (optional - uncomment if you want to publish to Snap Store)
+# snapcrafts:
+#   - name: zerohand
+#     summary: A distributed load testing tool for Web APIs
+#     description: |
+#       Zerohand is a distributed load testing tool designed to help developers
+#       and DevOps engineers quickly assess API performance and capacity.
+#     grade: stable
+#     confinement: strict
+#     license: MIT
+#     base: core22
+#     publish: false
+
+# Docker images (optional - uncomment if you want to publish Docker images)
+# dockers:
+#   - image_templates:
+#       - "nilpoona/zerohand:{{ .Tag }}-amd64"
+#       - "nilpoona/zerohand:latest-amd64"
+#     use: buildx
+#     goos: linux
+#     goarch: amd64
+#     build_flag_templates:
+#       - "--platform=linux/amd64"
+#       - "--label=org.opencontainers.image.created={{.Date}}"
+#       - "--label=org.opencontainers.image.title={{.ProjectName}}"
+#       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+#       - "--label=org.opencontainers.image.version={{.Version}}"
+#   - image_templates:
+#       - "nilpoona/zerohand:{{ .Tag }}-arm64"
+#       - "nilpoona/zerohand:latest-arm64"
+#     use: buildx
+#     goos: linux
+#     goarch: arm64
+#     build_flag_templates:
+#       - "--platform=linux/arm64"
+#       - "--label=org.opencontainers.image.created={{.Date}}"
+#       - "--label=org.opencontainers.image.title={{.ProjectName}}"
+#       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+#       - "--label=org.opencontainers.image.version={{.Version}}"
+# docker_manifests:
+#   - name_template: "nilpoona/zerohand:{{ .Tag }}"
+#     image_templates:
+#       - "nilpoona/zerohand:{{ .Tag }}-amd64"
+#       - "nilpoona/zerohand:{{ .Tag }}-arm64"
+#   - name_template: "nilpoona/zerohand:latest"
+#     image_templates:
+#       - "nilpoona/zerohand:latest-amd64"
+#       - "nilpoona/zerohand:latest-arm64"
+
+# Announce (optional - uncomment if you want to announce releases)
+# announce:
+#   twitter:
+#     enabled: false
+#   discord:
+#     enabled: false
