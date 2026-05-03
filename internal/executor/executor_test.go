@@ -299,8 +299,8 @@ func TestClassifyError(t *testing.T) {
 			expected: "network_error",
 		},
 		{
-			name: "unknown error",
-			err:  errors.New("some random error"),
+			name:     "unknown error",
+			err:      errors.New("some random error"),
 			expected: "unknown_error",
 		},
 	}
@@ -504,7 +504,7 @@ func TestExecuteRequestWithTLSError(t *testing.T) {
 	originalClient := createHTTPClient(time.Duration(cfg.Timeout) * time.Second)
 	transport := originalClient.Transport.(*http.Transport)
 	transport.TLSClientConfig = &tls.Config{
-		InsecureSkipVerify: false, // Enforce certificate verification
+		InsecureSkipVerify: false,              // Enforce certificate verification
 		RootCAs:            x509.NewCertPool(), // Empty pool will fail verification
 	}
 
@@ -669,9 +669,9 @@ func TestExecuteRequestWithVariousNetworkErrors(t *testing.T) {
 			if tt.expectedError != "" {
 				// For network errors, allow some flexibility in classification
 				if result.Error != tt.expectedError &&
-				   result.Error != "connection_error" &&
-				   result.Error != "network_error" &&
-				   result.Error != "unknown_error" {
+					result.Error != "connection_error" &&
+					result.Error != "network_error" &&
+					result.Error != "unknown_error" {
 					t.Errorf("expected error to be network-related, got %s", result.Error)
 				}
 			} else {
