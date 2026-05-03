@@ -200,14 +200,34 @@ Errors are automatically classified into the following categories:
 - Efficient memory usage for up to 1000 concurrent requests
 - Low CPU overhead at moderate load levels
 
-## Testing Recommendations
+## Testing
 
-### Test Against Public APIs
+### Running Tests
+
+```bash
+# Run all unit tests
+go test ./...
+
+# Run with coverage
+go test -cover ./...
+
+# Run integration tests (E2E tests with actual binary)
+go test -v ./test/integration/... -timeout 5m
+
+# Run integration tests in short mode (skips network tests)
+go test -v ./test/integration/... -short
+```
+
+For more details on integration tests, see [test/integration/README.md](test/integration/README.md).
+
+### Testing Recommendations
+
+#### Test Against Public APIs
 
 - [httpbin.org](https://httpbin.org): Great for testing various HTTP methods and responses
 - [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com): REST API for testing
 
-### Start with Low RPS
+#### Start with Low RPS
 
 Begin with low RPS (10-50) to avoid overwhelming the target server.
 
