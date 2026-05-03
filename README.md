@@ -1,10 +1,10 @@
 # Zerohand
 
-A distributed load testing tool for Web APIs built with Go.
+A simple and efficient load testing tool for Web APIs built with Go.
 
 ## Overview
 
-Zerohand is a distributed load testing tool designed to help developers and DevOps engineers quickly assess API performance and capacity. With a focus on spike tests, load tests, and stress tests, Zerohand provides:
+Zerohand is a simple load testing tool designed to help developers and DevOps engineers quickly assess API performance and capacity. With a focus on spike tests, load tests, and stress tests, Zerohand provides:
 
 - Simple CLI interface for quick load testing
 - RPS (requests per second) control
@@ -272,8 +272,8 @@ Example test sequence:
 
 ## Future Enhancements
 
-- Distributed load generation across multiple machines
-- Real-time metrics visualization
+- Distributed load generation across multiple nodes
+- Real-time metrics visualization with Web UI
 - WebSocket and Server-Sent Events support
 - Multi-step scenario testing
 - Advanced authentication support
