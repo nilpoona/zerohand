@@ -1,10 +1,14 @@
 # Zerohand
 
-A distributed load testing tool for Web APIs built with Go.
+[![CI](https://github.com/nilpoona/zerohand/actions/workflows/go-test.yml/badge.svg)](https://github.com/nilpoona/zerohand/actions/workflows/go-test.yml)
+[![Release](https://github.com/nilpoona/zerohand/actions/workflows/release.yml/badge.svg)](https://github.com/nilpoona/zerohand/actions/workflows/release.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nilpoona/zerohand)](https://goreportcard.com/report/github.com/nilpoona/zerohand)
+
+A simple and efficient load testing tool for Web APIs built with Go.
 
 ## Overview
 
-Zerohand is a distributed load testing tool designed to help developers and DevOps engineers quickly assess API performance and capacity. With a focus on spike tests, load tests, and stress tests, Zerohand provides:
+Zerohand is a simple load testing tool designed to help developers and DevOps engineers quickly assess API performance and capacity. With a focus on spike tests, load tests, and stress tests, Zerohand provides:
 
 - Simple CLI interface for quick load testing
 - RPS (requests per second) control
@@ -272,8 +276,8 @@ Example test sequence:
 
 ## Future Enhancements
 
-- Distributed load generation across multiple machines
-- Real-time metrics visualization
+- Distributed load generation across multiple nodes
+- Real-time metrics visualization with Web UI
 - WebSocket and Server-Sent Events support
 - Multi-step scenario testing
 - Advanced authentication support
@@ -296,8 +300,4 @@ Consider increasing the `--timeout` value or checking network connectivity.
 ### Progress Not Updating
 
 Progress updates every second. For very short tests (<3 seconds), you might not see many updates.
-
-## License
-
-MIT License
 
