@@ -49,7 +49,6 @@ archives:
     files:
       - README.md
       - LICENSE
-      - CLAUDE.md
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
