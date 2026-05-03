@@ -1,5 +1,9 @@
 # Zerohand
 
+[![CI](https://github.com/nilpoona/zerohand/actions/workflows/go-test.yml/badge.svg)](https://github.com/nilpoona/zerohand/actions/workflows/go-test.yml)
+[![Release](https://github.com/nilpoona/zerohand/actions/workflows/release.yml/badge.svg)](https://github.com/nilpoona/zerohand/actions/workflows/release.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nilpoona/zerohand)](https://goreportcard.com/report/github.com/nilpoona/zerohand)
+
 A simple and efficient load testing tool for Web APIs built with Go.
 
 ## Overview
