@@ -6,6 +6,7 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/nilpoona/zerohand/internal/executor"
 )
@@ -13,6 +14,8 @@ import (
 // Stats holds aggregated statistical information
 type Stats struct {
 	TotalRequests  int            `json:"total_requests"`
+	ActualRPS      float64        `json:"actual_rps"`        // Actually achieved requests per second
+	TestDuration   float64        `json:"test_duration_sec"` // Actual test duration in seconds
 	Request        RequestStats   `json:"request"`
 	Response       ResponseStats  `json:"response"`
 	StatusCodeDist map[int]int    `json:"status_code_dist"`
@@ -48,6 +51,25 @@ func CalculateStats(results []*executor.Result) *Stats {
 
 	if len(results) == 0 {
 		return stats
+	}
+
+	// Calculate actual test duration from timestamps
+	var firstTimestamp, lastTimestamp time.Time
+	for _, result := range results {
+		if firstTimestamp.IsZero() || result.Timestamp.Before(firstTimestamp) {
+			firstTimestamp = result.Timestamp
+		}
+		if lastTimestamp.IsZero() || result.Timestamp.After(lastTimestamp) {
+			lastTimestamp = result.Timestamp
+		}
+	}
+
+	// Calculate test duration and actual RPS
+	if !firstTimestamp.IsZero() && !lastTimestamp.IsZero() {
+		stats.TestDuration = lastTimestamp.Sub(firstTimestamp).Seconds()
+		if stats.TestDuration > 0 {
+			stats.ActualRPS = float64(stats.TotalRequests) / stats.TestDuration
+		}
 	}
 
 	// Collect durations (in microseconds)
@@ -123,6 +145,11 @@ func FormatStats(stats *Stats) string {
 
 	sb.WriteString("\nResults:\n")
 	sb.WriteString(fmt.Sprintf("Total Requests:  %d\n", stats.TotalRequests))
+
+	if stats.TestDuration > 0 {
+		sb.WriteString(fmt.Sprintf("Test Duration:   %.2fs\n", stats.TestDuration))
+		sb.WriteString(fmt.Sprintf("Actual RPS:      %.2f\n", stats.ActualRPS))
+	}
 
 	if stats.TotalRequests > 0 {
 		sb.WriteString(fmt.Sprintf("Success:         %d (%.2f%%)\n", stats.Request.SuccessCount, stats.Request.SuccessRate))
