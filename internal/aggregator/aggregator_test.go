@@ -108,6 +108,27 @@ func TestCalculateStats(t *testing.T) {
 				}
 			},
 		},
+		{
+			name: "actual RPS calculation",
+			results: []*executor.Result{
+				{Timestamp: time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC), StatusCode: 200, Duration: 10000, Error: ""},
+				{Timestamp: time.Date(2024, 1, 1, 0, 0, 1, 0, time.UTC), StatusCode: 200, Duration: 10000, Error: ""},
+				{Timestamp: time.Date(2024, 1, 1, 0, 0, 2, 0, time.UTC), StatusCode: 200, Duration: 10000, Error: ""},
+				{Timestamp: time.Date(2024, 1, 1, 0, 0, 3, 0, time.UTC), StatusCode: 200, Duration: 10000, Error: ""},
+				{Timestamp: time.Date(2024, 1, 1, 0, 0, 4, 0, time.UTC), StatusCode: 200, Duration: 10000, Error: ""},
+			},
+			validate: func(t *testing.T, stats *Stats) {
+				// 5 requests over 4 seconds = 1.25 RPS
+				expectedRPS := 1.25
+				if stats.ActualRPS != expectedRPS {
+					t.Errorf("expected %.2f RPS, got %.2f", expectedRPS, stats.ActualRPS)
+				}
+				expectedDuration := 4.0
+				if stats.TestDuration != expectedDuration {
+					t.Errorf("expected %.2fs duration, got %.2f", expectedDuration, stats.TestDuration)
+				}
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -204,6 +225,8 @@ func TestResponseStats(t *testing.T) {
 func TestFormatStats(t *testing.T) {
 	stats := &Stats{
 		TotalRequests: 100,
+		ActualRPS:     10.5,
+		TestDuration:  9.52,
 		Request: RequestStats{
 			SuccessCount: 95,
 			FailureCount: 5,
@@ -232,6 +255,8 @@ func TestFormatStats(t *testing.T) {
 
 	expectedStrings := []string{
 		"Total Requests:  100",
+		"Test Duration:   9.52s",
+		"Actual RPS:      10.50",
 		"Success:         95 (95.00%)",
 		"Failure:         5 (5.00%)",
 		"Average:  45.50ms",
